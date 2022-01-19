@@ -2,8 +2,10 @@
   <div id="app">
     <Header
     @search="getFilms($event)"
-  />
-    <Main />
+    />
+    <Main 
+    :filmList="filmsArray"
+    />
     <Footer />
   </div>
 </template>
