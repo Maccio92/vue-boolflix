@@ -3,8 +3,7 @@
     <Header
     @search="getFilms($event)"
   />
-    <Main 
-    :filmList="filmsArray"/>
+    <Main />
     <Footer />
   </div>
 </template>
@@ -23,6 +22,17 @@ export default {
     Main,
     Footer,
   },
+  data(){
+        return{
+          filmsArray: null,
+          
+  }
+},
+methods: {
+  getFilms(array){
+    this.filmsArray= array;
+  }
+}
 }
 </script>
 
