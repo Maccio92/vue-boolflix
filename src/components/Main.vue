@@ -1,16 +1,21 @@
 <template>
-<div>
-<CardMovies 
-    v-for="(film, index) in filmList" 
-    :key="index"
-    :filmList ="filmList"  
-/>
-<CardSeries 
-    v-for="(series, index) in seriesList" 
-        :key="index"
-        :seriesList ="seriesList"
-/>
-</div>
+<main>
+    <ul v-if="filmList.length > 0">
+        <h2>MOVIES</h2>
+        <CardMovies 
+            :filmList ="filmList"  
+        />
+    </ul>
+    <ul v-if="seriesList.length > 0">
+        <h2>SERIES</h2>
+        <CardSeries 
+            :seriesList ="seriesList"
+        />
+    </ul>
+    <div v-else>
+        <h2>Nessun risultato trovato</h2>
+    </div>
+</main>
 
 </template>
 

@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <Header
-    @search="getFilms($event)"
+    @searchFilms="getFilms($event)" @searchSeries="getSeries($event)"
     />
     <Main 
     :filmList="filmsArray"
+    :seriesList="seriesArray"
     />
     <Footer />
   </div>
@@ -26,13 +27,16 @@ export default {
   },
   data(){
         return{
-          filmsArray: null,
-          
+          filmsArray: [],
+          seriesArray: [],   
   }
 },
 methods: {
-  getFilms(array){
-    this.filmsArray= array;
+  getFilms(value){
+    this.filmsArray = value;
+  },
+  getSeries(value){
+    this.seriesArray = value;
   }
 }
 }

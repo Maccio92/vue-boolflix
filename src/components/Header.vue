@@ -1,7 +1,7 @@
 <template>
 <div>
     <input type="text" v-model="inputText">
-    <button @click=" researchSeries();">
+    <button @click="research()">
         Cerca
     </button>
 </div>
@@ -16,7 +16,8 @@ data(){
     return {
         apiQuery: 'https://api.themoviedb.org/3/search/',
         inputText: '',
-        films: null, 
+        films: null,
+        series: null, 
         api:'c485ac33ea061739b9eb0edada7a8d4b',
         language: '',
     };
@@ -33,9 +34,9 @@ methods: {
         {params: parameters}).then((result) => {
             this.films = result.data.results,
             this.language = result.data.results.original_language,
-            this.$emit('search', this.films)
-            console.log(this.films)
-            console.log(this.language);
+            this.$emit('searchFilms', this.films)
+            // console.log(this.films)
+            // console.log(this.language);
             }).catch((err) => {
                 console.log(err);
             });
@@ -49,15 +50,19 @@ methods: {
         };        
         axios.get(`${this.apiQuery}${seriesEndpoint}`, 
         {params: parameters}).then((result) => {
-            this.films = result.data.results,
+            this.series = result.data.results,
             this.language = result.data.results.original_language,
-            this.$emit('search', this.films)
-            console.log(this.films)
-            console.log(this.language);
+            this.$emit('searchSeries', this.series)
+            // console.log(this.films)
+            // console.log(this.language);
             }).catch((err) => {
                 console.log(err);
             });
-    }
+    },
+    research(){
+        this.researchMovie();
+        this.researchSeries();     
+    },
 }
 }
 </script>
