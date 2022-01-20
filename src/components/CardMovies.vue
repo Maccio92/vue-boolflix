@@ -12,8 +12,7 @@
             
             <h5>{{film.vote_average}}</h5>
         </li>
-    </ul>
-    
+    </ul>   
 </div>
 </template>
 

@@ -2,10 +2,14 @@
   <div id="app">
     <Header
     @searchFilms="getFilms($event)" @searchSeries="getSeries($event)"
+    @showFilm="showingListFilms($event)"
+    @showSeries="showingListSeries($event)"
     />
     <Main 
     :filmList="filmsArray"
     :seriesList="seriesArray"
+    :showingFilm ="showListFilms"
+    :showingSeries ="showListSeries"
     />
     <Footer />
   </div>
@@ -27,6 +31,8 @@ export default {
   },
   data(){
         return{
+          showListFilms: null,
+          showListSeries: null,
           filmsArray: [],
           seriesArray: [],   
   }
@@ -37,6 +43,12 @@ methods: {
   },
   getSeries(value){
     this.seriesArray = value;
+  },
+  showingListFilms(value){
+    this.showListFilms = value;
+  },
+  showingListSeries(value){
+    this.showListSeries = value;
   }
 }
 }

@@ -1,18 +1,21 @@
 <template>
 <main>
-    <ul v-if="filmList.length > 0">
+    <ul v-if="showingFilm">
         <h2>MOVIES</h2>
         <CardMovies 
             :filmList ="filmList"  
         />
     </ul>
-    <ul v-if="seriesList.length > 0">
+    <div v-else-if="showingFilm == false">
+        <h2>Nessun risultato trovato</h2>
+    </div>
+    <ul v-if="showingSeries">
         <h2>SERIES</h2>
         <CardSeries 
             :seriesList ="seriesList"
         />
     </ul>
-    <div v-else>
+    <div v-else-if="showingSeries == false">
         <h2>Nessun risultato trovato</h2>
     </div>
 </main>
@@ -29,7 +32,7 @@ export default {
         CardMovies,
         CardSeries,
     },
-    props: ["filmList", "seriesList"],
+    props: ["filmList", "seriesList", "showingFilm", "showingSeries"],
     
 }
 </script>
