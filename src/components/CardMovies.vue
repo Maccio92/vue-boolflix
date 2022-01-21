@@ -16,7 +16,7 @@
                     <div>
                             <i v-for="(star, index) in 5" 
                             :key="index" 
-                            :class="(index < getValutation(valuteFilm) ? 'fas fa-star' : 'far fa-star')"></i>
+                            :class="(index < getValutation(film.vote_average) ? 'fas fa-star' : 'far fa-star')"></i>
                         </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
 <script>
 export default {
     name: 'CardMovies',
-    props: ["filmList", "valuteFilm"],
+    props: ["filmList"],
     methods: {
     getFlag(lang) {
             switch (lang){
@@ -46,8 +46,8 @@ export default {
                 return lang
             }
         },
-        getValutation(valuteFilm){
-        return Math.round (valuteFilm / 2);
+        getValutation(vote){
+        return Math.round (vote / 2);
     }
     }
 }

@@ -17,7 +17,7 @@
                         <div>
                             <i v-for="(star, index) in 5" 
                             :key="index" 
-                            :class="(index < getValutation(valuteSeries) ? 'fas fa-star' : 'far fa-star')"></i>
+                            :class="(index < getValutation(series.vote_average) ? 'fas fa-star' : 'far fa-star')"></i>
                         </div>  
                     </div>
                 </div>
@@ -30,7 +30,7 @@
 <script>
 export default {
     name: 'CardSeries',
-    props: ["seriesList", "valuteSeries"],
+    props: ["seriesList"],
     methods: {
     getFlag(lang) {
             switch (lang){
@@ -48,8 +48,8 @@ export default {
                 return lang
             }
         },
-        getValutation(valuteSeries){
-        return Math.round (valuteSeries / 2);
+        getValutation(vote){
+        return Math.round (vote / 2);
     }
     },
 }
