@@ -4,7 +4,7 @@
         <li class="my-3 p-3 rounded-7 shadow" v-for="(film, index) in filmList" 
             :key="index">
             <div class="d-flex justify-content-start align-items-center" >
-                <img :src="'http://image.tmdb.org/t/p/w500' + film.poster_path" alt="">
+                <img :src="'http://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
                 <div class="ps-5">
                     <p class="mb-1">Titolo</p>
                     <h2 class="fs-4 text mb-3">{{film.title}}</h2>
@@ -13,7 +13,11 @@
                     <p class="mb-1">Lingua originale</p>
                     <i :class="'mb-3 flag flag-' +  getFlag(film.original_language)"></i>
                     <p class="mb-1">Voto</p>
-                    <h5 class="fs-5 text mb-3">{{film.vote_average}}</h5>
+                    <div>
+                            <i v-for="(star, index) in 5" 
+                            :key="index" 
+                            :class="(index < getValutation(valuteFilm) ? 'fas fa-star' : 'far fa-star')"></i>
+                        </div>
                 </div>
             </div>
         </li>
@@ -24,7 +28,7 @@
 <script>
 export default {
     name: 'CardMovies',
-    props: ["filmList"],
+    props: ["filmList", "valuteFilm"],
     methods: {
     getFlag(lang) {
             switch (lang){
@@ -41,7 +45,10 @@ export default {
             default:
                 return lang
             }
-        }
+        },
+        getValutation(valuteFilm){
+        return Math.round (valuteFilm / 2);
+    }
     }
 }
 </script>

@@ -9,7 +9,8 @@
                 <div class="container col-6" v-if="showingFilm">
                     <h2 class="mb-1">MOVIES</h2>
                         <CardMovies 
-                            :filmList ="filmList"  
+                            :filmList ="filmList" 
+                            :valuteFilm="filmList.vote_average" 
                         />
                         
                 </div>
@@ -20,6 +21,7 @@
                         <h2 class="mb-1">SERIES</h2>
                             <CardSeries 
                                 :seriesList ="seriesList"
+                                :valuteSeries="seriesList.vote_average"
                             />
                 </div>
                 <div class="row" v-else-if="showingSeries == false">
