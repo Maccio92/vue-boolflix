@@ -1,20 +1,20 @@
 <template>
 <div class="container">
     <ul class="list-unstyled ">
-        <li class="my-3 p-3" v-for="(film, index) in filmList" 
+        <li class="my-3 p-3 rounded-7 shadow" v-for="(film, index) in filmList" 
             :key="index">
-            <div class="d-flex justify-content-start" >
+            <div class="d-flex justify-content-start align-items-center" >
                 <img :src="'http://image.tmdb.org/t/p/w500' + film.poster_path" alt="">
-            <div class="ms-5">
-                <p class="mb-1">Titolo</p>
-                <h2 class="fs-4 text mb-3">{{film.title}}</h2>
-                <p class="mb-1" >Titolo originale</p>
-                <h3 class="fs-5 text mb-3">{{film.original_title}}</h3>
-                <p class="mb-1">Lingua originale</p>
-                <i :class="'flag flag-' +  getFlag(film.original_language)"></i>
-                <p class="mb-1">Voto</p>
-                <h5 class="fs-5 text mb-3">{{film.vote_average}}</h5>
-            </div>
+                <div class="ps-5">
+                    <p class="mb-1">Titolo</p>
+                    <h2 class="fs-4 text mb-3">{{film.title}}</h2>
+                    <p class="mb-1" >Titolo originale</p>
+                    <h3 class="fs-5 text mb-3">{{film.original_title}}</h3>
+                    <p class="mb-1">Lingua originale</p>
+                    <i :class="'mb-3 flag flag-' +  getFlag(film.original_language)"></i>
+                    <p class="mb-1">Voto</p>
+                    <h5 class="fs-5 text mb-3">{{film.vote_average}}</h5>
+                </div>
             </div>
         </li>
     </ul>   
@@ -48,14 +48,10 @@ export default {
 
 <style lang="scss">
 li{
-    height: 300px;
+    height: 400px;
     background-color: rgba($color: #181818, $alpha: 0.7);
-    div{
-        height: 100%;
-    
     img{
     height: 100%;
-    }
     }
     p{
         color: gray;

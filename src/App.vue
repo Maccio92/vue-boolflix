@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark" id="app">
+  <div id="app">
     <Header
     @searchFilms="getFilms($event)" 
     @searchSeries="getSeries($event)"
@@ -58,7 +58,8 @@ methods: {
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import '~mdb-ui-kit/css/mdb.min.css';
-#id{
-  background-color: black;
+body{
+  background-color: rgb(33, 37, 41);
+
 }
 </style>
