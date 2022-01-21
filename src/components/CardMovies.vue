@@ -1,25 +1,24 @@
 <template>
-<div class="container">
-    <ul class="list-unstyled ">
-        <li class="my-3 p-3 rounded-7 shadow" v-for="(film, index) in filmList" 
+<div class="row row-cols-12 ">
+    <ul class="list-unstyled list-inline d-flex flex-wrap gap-4 justify-content-around">
+        <li class=" col-2 list-inline-item justify-content-center" v-for="(film, index) in filmList" 
             :key="index">
-            <div class="d-flex justify-content-start align-items-center" >
-                <img :src="'http://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
-                <div class="ps-5">
-                    <p class="mb-1">Titolo</p>
-                    <h2 class="fs-4 text mb-3">{{film.title}}</h2>
-                    <p class="mb-1" >Titolo originale</p>
-                    <h3 class="fs-5 text mb-3">{{film.original_title}}</h3>
-                    <p class="mb-1">Lingua originale</p>
-                    <i :class="'mb-3 flag flag-' +  getFlag(film.original_language)"></i>
-                    <p class="mb-1">Voto</p>
+                <img class="img-fluid" :src="'http://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
+                <div class="p-3 overlay">
+                    <p class="mb-1 ">Titolo</p>
+                    <h2 class="mb-2">{{film.title}}</h2>
+                    <p class="mb-1 " >Titolo originale</p>
+                    <h3 class=" mb-2">{{film.original_title}}</h3>
+                    <p class="mb-1 ">Lingua originale</p>
+                    <i :class="'mb-2 flag flag-' +  getFlag(film.original_language)"></i>
                     <div>
+                        <p class="mb-1">Voto</p>
                             <i v-for="(star, index) in 5" 
                             :key="index" 
                             :class="(index < getValutation(film.vote_average) ? 'fas fa-star' : 'far fa-star')"></i>
-                        </div>
+                    </div>
+                    <p class="mt-2">"{{(film.overview != "") ? film.overview : "Descrizione non disponibile" }}"</p>
                 </div>
-            </div>
         </li>
     </ul>   
 </div>
@@ -55,14 +54,34 @@ export default {
 
 <style lang="scss">
 li{
-    height: 400px;
-    background-color: rgba($color: #181818, $alpha: 0.7);
-    img{
-    height: 100%;
+    height: 350px;
+    position: relative;
+    &:hover .overlay{
+        display: block;
+        cursor: pointer;
     }
-    p{
-        color: gray;
-    }
+    .overlay{
+        background-color: black;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        overflow:auto;
+            p{
+            font-size: 0.8em;
+            color: gray;
+            }
+            h2{
+                font-size: 1em;
+            }
+            h3{
+                font-size: 1em; 
+            }
+        }
+    
 }
+
 
 </style>    
