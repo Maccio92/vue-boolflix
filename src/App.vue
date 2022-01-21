@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
+  <div class="bg-dark" id="app">
     <Header
-    @searchFilms="getFilms($event)" @searchSeries="getSeries($event)"
+    @searchFilms="getFilms($event)" 
+    @searchSeries="getSeries($event)"
     @showFilm="showingListFilms($event)"
     @showSeries="showingListSeries($event)"
     />
@@ -50,11 +51,14 @@ methods: {
   showingListSeries(value){
     this.showListSeries = value;
   }
-}
+},
 }
 </script>
 
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import '~mdb-ui-kit/css/mdb.min.css';
+#id{
+  background-color: black;
+}
 </style>
